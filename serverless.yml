@@ -1,0 +1,16 @@
+service: serverless-secured-api
+
+provider:
+  name: aws
+  runtime: nodejs4.3
+  apiKeys:
+    - secret
+
+functions:
+  securedGreeter:
+    handler: handler.securedGreeter
+    events:
+      - http:
+          path: greet
+          method: GET
+          private: true
